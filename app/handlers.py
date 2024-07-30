@@ -7,7 +7,7 @@ from aiogram.fsm.state import State, StatesGroup
 import app.keyboards as kb
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, callback_query
-from app.requests import get_current_weather
+from app.requests import get_current_weather, get_prediction_weather
 
 load_dotenv()
 
@@ -42,4 +42,4 @@ async def wether(message: Message, state: FSMContext):
 @router.message(Get_weater.pred_weather)
 async def wether(message: Message, state: FSMContext):
     await state.clear()
-    await message.answer("В разработке")
+    await message.answer(await get_prediction_weather(API, message.text))
