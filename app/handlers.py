@@ -1,13 +1,14 @@
-from aiogram import F, Router
 import os
+from aiogram import F, Router
 from dotenv import load_dotenv
 from aiogram.fsm.context import FSMContext
-from aiogram.fsm.state import State, StatesGroup
+from aiogram.filters import CommandStart 
+from aiogram.types import Message
 
 import app.keyboards as kb
-from aiogram.filters import CommandStart, Command
-from aiogram.types import Message, callback_query
+
 from app.requests import get_current_weather, get_prediction_weather
+from app.states import Get_weater
 
 load_dotenv()
 
@@ -15,9 +16,7 @@ router = Router()
 
 API = os.getenv('API')
 
-class Get_weater(StatesGroup):
-    cur_weather = State()
-    pred_weather = State()
+
 
 @router.message(CommandStart())
 async def cmd_start(message: Message, state: FSMContext):
