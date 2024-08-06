@@ -1,4 +1,5 @@
 import os
+
 from aiogram import F, Router
 from dotenv import load_dotenv
 from aiogram.fsm.context import FSMContext
@@ -6,7 +7,6 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message
 
 import app.keyboards as kb
-
 from app.requests import get_current_weather, get_prediction_weather
 from app.states import Get_weater
 

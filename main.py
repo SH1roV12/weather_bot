@@ -1,6 +1,7 @@
-import asyncio
 import logging
 import os
+import asyncio
+
 from aiogram import Bot, Dispatcher, F
 from dotenv import load_dotenv
 

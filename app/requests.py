@@ -1,5 +1,7 @@
-import aiohttp
 import time
+
+import aiohttp
+
 from app.data import russian, english
 
 async def get_prediction_weather_from_json(current_time, weather):
