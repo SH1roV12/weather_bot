@@ -4,7 +4,7 @@ import aiohttp
 
 from app.data import russian, english
 
-async def get_prediction_weather_from_json(current_time, weather):
+async def get_prediction_weather_from_json(current_time, weather) -> str:
      answer = ''
      f = 0
      for hour in weather:
@@ -15,7 +15,7 @@ async def get_prediction_weather_from_json(current_time, weather):
                     break
      return answer
 
-async def get_current_weather(API, city):
+async def get_current_weather(API, city) -> str:
     async with aiohttp.ClientSession() as session:
         async with session.get(f'https://api.weatherapi.com/v1/current.json?key={API}&q={city}') as response:
             response = await response.json()
@@ -23,7 +23,7 @@ async def get_current_weather(API, city):
             return current_weather
 
 
-async def get_prediction_weather(API, city):
+async def get_prediction_weather(API, city) -> str:
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(f'https://api.weatherapi.com/v1/forecast.json?key={API}&q={city}') as response:
