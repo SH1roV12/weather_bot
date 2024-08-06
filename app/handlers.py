@@ -21,7 +21,7 @@ API = os.getenv('API')
 @router.message(CommandStart())
 async def cmd_start(message: Message, state: FSMContext):
     await state.clear()
-    await message.answer('hi', reply_markup=kb.main)
+    await message.answer('hi', reply_markup=await kb.main_kb())
 
 @router.message(F.text == 'Погода сейчас')
 async def ask_city(message: Message, state: FSMContext):
